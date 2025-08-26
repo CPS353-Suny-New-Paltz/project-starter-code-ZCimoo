@@ -193,5 +193,15 @@
       <!-- The check is suppressed in the next line of code after the comment -->
       <property name="influenceFormat" value="1"/>
     </module>
+   <module name="GenericWhitespace">
+      <message key="ws.followed"
+             value="GenericWhitespace ''{0}'' is followed by whitespace."/>
+      <message key="ws.preceded"
+             value="GenericWhitespace ''{0}'' is preceded with whitespace."/>
+      <message key="ws.illegalFollow"
+             value="GenericWhitespace ''{0}'' should followed by whitespace."/>
+      <message key="ws.notPreceded"
+             value="GenericWhitespace ''{0}'' is not preceded with whitespace."/>
+    </module>         
   </module>
 </module>
