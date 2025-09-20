@@ -2,7 +2,7 @@ package api;
 
 public class ComputationDataRequest {
 
-	public ComputationDataRequest(Object computationId) {
+	public ComputationDataRequest(ComputationIdentifier computationId) {
 		// TODO Auto-generated constructor stub
 	}
 
