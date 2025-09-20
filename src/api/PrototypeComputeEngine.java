@@ -5,6 +5,7 @@ import project.annotations.ConceptualAPIPrototype;
 public class PrototypeComputeEngine {
 	
 	@ConceptualAPIPrototype
+
 	public void prototype(ComputeEngineAPI computeEngine) {
 		//start a computation
 		ComputationStartResponse startResponse = 
@@ -15,6 +16,6 @@ public class PrototypeComputeEngine {
 		//write computation results
 		ComputationResultResponse resultRespone = 
 				computeEngine.writeComputationResults(new ComputationResultRequest(startResponse.getComputationId()));
-		
+
 	}
 }
