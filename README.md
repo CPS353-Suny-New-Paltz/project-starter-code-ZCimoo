@@ -1,5 +1,3 @@
 # Software Engineering Project Starter Code
 
-We have chosen to use the Collatz Sequence for our computation.
-
-![<Image showing project diagram with three APIs>](https://github.com/CPS353-Suny-New-Paltz/project-starter-code-ZCimoo/blob/main/APIDiagram.JPG?raw=true)
+This repo will start you off with an initial configuration that you'll modify as part of Checkpoint 1. As part of the modifications, you'll eventually delete the contents of this README and replace it with documentation for your project.
