@@ -1,4 +1,4 @@
-package TestAPIs;
+package test.apis;
 
 import static org.junit.jupiter.api.Assertions.assertNull;
 
