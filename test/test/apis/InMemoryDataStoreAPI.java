@@ -38,7 +38,7 @@ public class InMemoryDataStoreAPI implements DataStorageAPI {
 			public boolean status() {
 				return true;
 			}
-		}
+		};
 	}
 
 }
