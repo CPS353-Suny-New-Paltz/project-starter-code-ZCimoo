@@ -6,7 +6,7 @@ public class InMemoryInputConfig {
 	
 	private final List<Integer> inputData;
 	
-	public InMemoryInputConfig (List<Integer> inputData) {
+	public InMemoryInputConfig(List<Integer> inputData) {
 		
 		this.inputData = inputData;
 	}
