@@ -11,6 +11,6 @@ public class PrototypeDataStorageAPI {
 				dataStore.readData(new DataReadRequest());
 		//write to destination
 		DataWriteResponse writeResponse = 
-				dataStore.writeData(new DataWriteRequest());
+				dataStore.writeData(new DataWriteRequest(null));
 	}
 }
