@@ -22,10 +22,16 @@ public class InMemoryDataStoreAPI implements DataStorageAPI {
 	
 	@Override
 	public DataReadResponse readData(DataReadRequest dataReadRequest) {
-		
+		//assign input data as string
+		String data = inputConfig.getInputData().toString();
 		return new DataReadResponse() {
 			public boolean status() {
 				return true;
+			}
+			
+			//implement getData to return inputConfig data as string for now.
+			public String getData() {
+				return data;
 			}
 		};
 	}
@@ -37,6 +43,10 @@ public class InMemoryDataStoreAPI implements DataStorageAPI {
 		return new DataWriteResponse() {
 			public boolean status() {
 				return true;
+			}
+			
+			public String getData() {
+				return dataWriteRequest.getData();			
 			}
 		};
 	}
