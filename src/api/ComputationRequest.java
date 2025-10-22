@@ -1,14 +1,11 @@
 package api;
 
-import java.util.List;
-
 public class ComputationRequest {
 	//default delimiter
-	private String delimiter;
-	private String defaultDelimiter = ",";
+	public String delimiter;
 	
 	public ComputationRequest() {
-		this.delimiter = defaultDelimiter;
+		this.delimiter = ",";
 	}
 	
 	//custom delimiter
@@ -16,15 +13,6 @@ public class ComputationRequest {
 		this.delimiter = delimiter;
 	}
 	
-	public ComputationRequest(List<Integer> inputData) {
-		this.delimiter = defaultDelimiter;
-	}
-	
-	public ComputationRequest(List<Integer> inputData, String delimiter) {
-		this.delimiter = delimiter;
-		
-	}
-
 	//get method for delimiter
 	public String getDelimiter() {
 		return delimiter;
