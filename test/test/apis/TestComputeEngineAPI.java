@@ -4,10 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import api.ComputationDataRequest;
-import api.ComputationDataResponse;
-import api.ComputationResultRequest;
-import api.ComputationResultResponse;
+import api.ComputationCompleteRequest;
+import api.ComputationCompleteResponse;
 import api.ComputationStartRequest;
 import api.ComputationStartResponse;
 import implementations.ComputeEngineImplementation;
@@ -28,31 +26,16 @@ public class TestComputeEngineAPI {
 	}
 	
 	@Test
-	public void testReadComputationDataReturnsDefault() {
-		//Create implementation
+	public void testCompleteComputationReturnsDefault() {
+		//create implementation
 		ComputeEngineImplementation computeEngine = new ComputeEngineImplementation();
 		
-		//Call readComputationData method with mock request
-		ComputationDataResponse response = 
-				computeEngine.readComputationData(Mockito.mock(ComputationDataRequest.class));
+		//call complete method with mock request
+		ComputationCompleteResponse response =
+				computeEngine.completeComputation(Mockito.mock(ComputationCompleteRequest.class));
 		
-		//Placeholder return because implementation is not complete
-		assertNull(response,"Expected null response, not implemented yet");
-		
-	}
-	
-	@Test
-	public void testWriteComputationResultsReturnsDefault() {
-		//Create implementation
-		ComputeEngineImplementation computeEngine = new ComputeEngineImplementation();
-		
-		//Call writeComputationResults with a mock request
-		ComputationResultResponse response = 
-				computeEngine.writeComputationResults(Mockito.mock(ComputationResultRequest.class));
-		
-		//Placeholder return because implementation is not complete
+		//placeholder return because implementation is not complete
 		assertNull(response, "Expected null response, not implemented yet");
-				
 	}
 
 }

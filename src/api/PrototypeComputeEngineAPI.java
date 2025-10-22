@@ -8,12 +8,9 @@ public class PrototypeComputeEngineAPI {
 		//start a computation
 		ComputationStartResponse startResponse = 
 				computeEngine.start(new ComputationStartRequest());
-		//read computation data
-		ComputationDataResponse dataResponse = 
-				computeEngine.readComputationData(new ComputationDataRequest(startResponse.getComputationId()));
-		//write computation results
-		ComputationResultResponse resultRespone = 
-				computeEngine.writeComputationResults(new ComputationResultRequest(startResponse.getComputationId()));
+		//complete a computation
+		ComputationCompleteResponse completeRespone = 
+				computeEngine.completeComputation(new ComputationCompleteRequest());
 
 	}
 }
