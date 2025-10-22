@@ -6,9 +6,7 @@ import project.annotations.ConceptualAPI;
 public interface ComputeEngineAPI {
 	ComputationStartResponse start(ComputationStartRequest computationStartRequest);
 
-	ComputationDataResponse readComputationData(ComputationDataRequest computationDataRequest);
-
-	ComputationResultResponse writeComputationResults(ComputationResultRequest computationResultRequest);
+	ComputationCompleteResponse completeComputation(ComputationCompleteRequest computationCompleteRequest);
 	
 
 }
