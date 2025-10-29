@@ -36,9 +36,8 @@ public class ComputeEngineImplementation implements ComputeEngineAPI {
 				//collatz sequence requires even integers to be divided by 2
 				x = x/2;
 				result.add(x);
-			}
-			//check if x is odd
-			else if(x % 2 == 1 ) {
+				//check if odd
+			} else if(x % 2 == 1 ) { 
 				//collatz sequence requires odd integers to be multiplied by 3 and add 1
 				x = (x * 3) + 1;
 				result.add(x);
