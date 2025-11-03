@@ -11,6 +11,10 @@ public class ComputationStartRequest {
 		this.computeInt = x;
 	}
 	
+	public ComputationStartRequest() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getComputeInt() {
 		return this.computeInt;
 	}

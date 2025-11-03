@@ -10,6 +10,10 @@ public class DataReadRequest {
 		this.inputPath = inputPath;
 	}
 	
+	public DataReadRequest() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getInputPath() {
 		return this.inputPath;
 	}
