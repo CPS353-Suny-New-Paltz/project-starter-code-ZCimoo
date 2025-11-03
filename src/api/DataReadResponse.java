@@ -1,9 +1,11 @@
 package api;
 
+import java.util.List;
+
 public interface DataReadResponse {
 	
 	boolean status();
 	
-	String getData();
+	List<Integer> getData();
 
 }

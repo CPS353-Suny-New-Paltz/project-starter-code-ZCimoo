@@ -22,8 +22,13 @@ public class UserNetworkImplementation implements UserNetworkAPI {
 	
 	@Override
 	public ComputationResponse sendRequest(ComputationRequest computationRequest) {
-		//placeholder return
+		if(computationRequest == null) {
+			return null;
+		}
+		
+		String inputPath = computationRequest.getInputPath();
 		return null;
+		
 	}
 	@Override
 	public ComputationInputResponse input(ComputationInputRequest computationInputRequest) {
