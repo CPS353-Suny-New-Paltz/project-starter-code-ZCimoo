@@ -1,5 +1,7 @@
 package test.apis;
 
+import java.util.List;
+
 import org.mockito.Mockito;
 
 import api.DataReadRequest;
@@ -23,14 +25,14 @@ public class InMemoryDataStoreAPI implements DataStorageAPI {
 	@Override
 	public DataReadResponse readData(DataReadRequest dataReadRequest) {
 		//assign input data as string
-		String data = inputConfig.getInputData().toString();
+		List<Integer> data = inputConfig.getInputData();
 		return new DataReadResponse() {
 			public boolean status() {
 				return true;
 			}
 			
 			//implement getData to return inputConfig data as string for now.
-			public String getData() {
+			public List<Integer> getData() {
 				return data;
 			}
 		};
@@ -38,16 +40,22 @@ public class InMemoryDataStoreAPI implements DataStorageAPI {
 	
 	public DataWriteResponse writeData(DataWriteRequest dataWriteRequest) {
 		
-		outputConfig.getOutputData().add(dataWriteRequest.getData());
+		//List of all sequences
+		List<List<Integer>> allResults = dataWriteRequest.getData();
+		
+		//Tests output list
+		List<String> resultsList = outputConfig.getOutputData();
+		
+		for(List<Integer> oneResult : allResults) {
+			String resultAsString = oneResult.toString();
+			resultsList.add(resultAsString);
+		}
 		
 		return new DataWriteResponse() {
 			public boolean status() {
 				return true;
 			}
-			
-			public String getData() {
-				return dataWriteRequest.getData();			
-			}
+
 		};
 	}
 

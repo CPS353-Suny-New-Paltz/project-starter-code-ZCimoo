@@ -11,14 +11,20 @@ import api.ComputationOutputRequest;
 import api.ComputationOutputResponse;
 import api.ComputationRequest;
 import api.ComputationResponse;
+import api.ComputeEngineAPI;
+import api.DataStorageAPI;
 import implementations.UserNetworkImplementation;
 
 public class TestUserNetworkAPI {
 	
 	@Test
 	public void testSendRequestReturnsDefault() {
+		//Create mock DataStorage and ComputeEngine
+		DataStorageAPI mockDS = Mockito.mock(DataStorageAPI.class);
+		ComputeEngineAPI mockCE = Mockito.mock(ComputeEngineAPI.class);
+		
 		//Create implementation
-		UserNetworkImplementation userNetwork = new UserNetworkImplementation();
+		UserNetworkImplementation userNetwork = new UserNetworkImplementation(mockDS, mockCE);
 		
 		//Call sendRequest method with mock request
 		ComputationResponse response = 
@@ -32,8 +38,12 @@ public class TestUserNetworkAPI {
 	
 	@Test
 	public void testInputReturnsDefault() {
+		//Create mock DataStorage and ComputeEngine
+		DataStorageAPI mockDS = Mockito.mock(DataStorageAPI.class);
+		ComputeEngineAPI mockCE = Mockito.mock(ComputeEngineAPI.class);
+		
 		//Create implementation
-		UserNetworkImplementation userNetwork = new UserNetworkImplementation();
+		UserNetworkImplementation userNetwork = new UserNetworkImplementation(mockDS, mockCE);
 		
 		//Call input method with mock request
 		ComputationInputResponse response = 
@@ -47,8 +57,11 @@ public class TestUserNetworkAPI {
 	
 	@Test
 	public void testOutputReturnsDefault() {
+		//Create mock DataStorage and ComputeEngine
+		DataStorageAPI mockDS = Mockito.mock(DataStorageAPI.class);
+		ComputeEngineAPI mockCE = Mockito.mock(ComputeEngineAPI.class);
 		//Create implementation
-		UserNetworkImplementation userNetwork = new UserNetworkImplementation();
+		UserNetworkImplementation userNetwork = new UserNetworkImplementation(mockDS, mockCE);
 		
 		//Call output method with mock request
 		ComputationOutputResponse response = 
