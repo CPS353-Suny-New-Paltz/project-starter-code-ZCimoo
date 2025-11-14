@@ -72,8 +72,7 @@ public class UserNetworkImplementation implements UserNetworkAPI {
 		//checks if data write was successful then returns ComputationResponse
 		if(dwResponse.status()) {
 			return new ComputationResponseImplementation(true);
-		}
-		else {
+		} else {
 			return new ComputationResponseImplementation(false);
 		}
 		
