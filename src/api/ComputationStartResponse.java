@@ -1,7 +1,9 @@
 package api;
 
-public interface ComputationStartResponse {
+import java.util.List;
 
-	ComputationIdentifier getComputationId();
+public interface ComputationStartResponse {
+	
+	List<Integer> getSequence();
 
 }

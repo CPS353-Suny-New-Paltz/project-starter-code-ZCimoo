@@ -30,10 +30,10 @@ public class TestComputeEngine {
 		
 		//create empty implementations
 		ComputeEngineImplementation computeEngine = new ComputeEngineImplementation();
-		UserNetworkImplementation userNetwork = new UserNetworkImplementation();
+		UserNetworkImplementation userNetwork = new UserNetworkImplementation(dataStore, computeEngine);
 		
 		//create computation  request for inputData
-		ComputationRequest computationRequest = new ComputationRequest(inputConfig.getInputData());
+		ComputationRequest computationRequest = new ComputationRequest("dummy-input-path");
 		
 		//send computation request through user network
 		userNetwork.sendRequest(computationRequest);
@@ -47,6 +47,7 @@ public class TestComputeEngine {
 		
 		//getting actual results from output config
 		results = outputConfig.getOutputData();
+		
 		
 		//checking if expected results = actual results
 		assertEquals(expectedResults, results);
