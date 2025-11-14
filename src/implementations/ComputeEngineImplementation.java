@@ -13,8 +13,16 @@ public class ComputeEngineImplementation implements ComputeEngineAPI {
 	
 	@Override
 	public ComputationStartResponse start(ComputationStartRequest computationStartRequest) {
-		//placeholder return
-		return null;
+		int intToCompute = computationStartRequest.getComputeInt();
+		
+		List<Integer> sequence = this.computeCollatzSequence(intToCompute);
+		
+		return new ComputationStartResponse() {
+			@Override
+			public List<Integer> getSequence(){
+				return sequence;
+			}
+		};
 	}
 
 	@Override

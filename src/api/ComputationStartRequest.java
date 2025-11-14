@@ -14,9 +14,9 @@ public class ComputationStartRequest {
 	public ComputationStartRequest() {
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	public int getComputeInt() {
-		return this.computeInt;
+		return computeInt;
 	}
 
 }
