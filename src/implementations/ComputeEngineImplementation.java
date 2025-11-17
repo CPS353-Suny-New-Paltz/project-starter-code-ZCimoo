@@ -13,7 +13,16 @@ public class ComputeEngineImplementation implements ComputeEngineAPI {
 	
 	@Override
 	public ComputationStartResponse start(ComputationStartRequest computationStartRequest) {
+		//Validate request and int to compute
+		if(computationStartRequest == null) {
+			throw new IllegalArgumentException("ComputationStartRequest cannot be null");
+		}
+		
+	
 		int intToCompute = computationStartRequest.getComputeInt();
+		if(intToCompute < 1) {
+			throw new IllegalArgumentException("Collatz input must be a positive integer");
+		}
 		
 		List<Integer> sequence = this.computeCollatzSequence(intToCompute);
 		

@@ -20,6 +20,15 @@ public class DataStorageImplementation implements DataStorageAPI {
 	@Override
 	public DataReadResponse readData(DataReadRequest dataReadRequest) {
 		
+		//Checking if readRequest and input path are null
+		if(dataReadRequest == null) {
+			throw new IllegalArgumentException("DataReadRequest cannot be null");
+		}
+		if(dataReadRequest.getInputPath() == null) {
+			throw new IllegalArgumentException("Input path cannot be null");
+		}
+		
+		
 		String inputPath = dataReadRequest.getInputPath();
 		List<Integer> inputs = new ArrayList<>();
 		
@@ -62,6 +71,14 @@ public class DataStorageImplementation implements DataStorageAPI {
 	}
 	@Override
 	public DataWriteResponse writeData(DataWriteRequest dataWriteRequest) {
+		//Validate the request and data
+		if(dataWriteRequest == null) {
+			throw new IllegalArgumentException("DataWriteRequest cannot be null");
+		}
+		if(dataWriteRequest.getData() == null){
+			throw new IllegalArgumentException("Output data cannot be null");
+		}
+		
 		
 		String outputPath = dataWriteRequest.getOutputPath();
 		
