@@ -34,8 +34,12 @@ public class UserNetworkImplementation implements UserNetworkAPI {
 	
 	@Override
 	public ComputationResponse sendRequest(ComputationRequest computationRequest) {
+		//Validate request and input/output paths
 		if(computationRequest == null) {
-			return null;
+			throw new IllegalArgumentException("ComputationRequest cannot be null");
+		}
+		if(computationRequest.getOutputPath() == null || computationRequest.getInputPath() == null) {
+			throw new IllegalArgumentException("Input/output paths cannot be null");
 		}
 		
 		//Get input and output paths from user
