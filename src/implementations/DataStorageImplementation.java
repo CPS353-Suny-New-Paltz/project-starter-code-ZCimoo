@@ -43,7 +43,7 @@ public class DataStorageImplementation implements DataStorageAPI {
 							//convert string to int add to input list
 							inputs.add(Integer.parseInt(numString.trim()));
 						} catch (NumberFormatException e) {
-							System.out.println("Non-Donumeric value: "+numString);
+							System.out.println("Non-numeric value: "+numString);
 						}
 					}
 				}
