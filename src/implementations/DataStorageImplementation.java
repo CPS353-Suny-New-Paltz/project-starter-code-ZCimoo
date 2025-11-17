@@ -71,6 +71,14 @@ public class DataStorageImplementation implements DataStorageAPI {
 	}
 	@Override
 	public DataWriteResponse writeData(DataWriteRequest dataWriteRequest) {
+		//Validate the request and data
+		if(dataWriteRequest == null) {
+			throw new IllegalArgumentException("DataWriteRequest cannot be null");
+		}
+		if(dataWriteRequest.getData() == null){
+			throw new IllegalArgumentException("Output data cannot be null");
+		}
+		
 		
 		String outputPath = dataWriteRequest.getOutputPath();
 		
