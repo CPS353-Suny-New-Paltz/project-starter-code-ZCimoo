@@ -43,7 +43,7 @@ public class DataStorageImplementation implements DataStorageAPI {
 							//convert string to int add to input list
 							inputs.add(Integer.parseInt(numString.trim()));
 						} catch (NumberFormatException e) {
-							System.out.println("Non-Donumeric value: "+numString);
+							System.out.println("Non-numeric value: "+numString);
 						}
 					}
 				}
@@ -71,17 +71,22 @@ public class DataStorageImplementation implements DataStorageAPI {
 		
 		try(BufferedWriter writer = new BufferedWriter(new FileWriter(outputPath))){
 			
+			List<String> formattedOutput = new ArrayList<>();
+			
 			for(List<Integer> outputList : outputData) {
 				
 				//Stream list of integers and convert to string joined by delimiter
-				String line = outputList.stream().map(String::valueOf).collect(Collectors.joining(delim));
-				
-				//Write line and move to next line
-				writer.write(line);
-				writer.newLine();
-										
-				
+				String outputStr = outputList.stream()
+                        .map(String::valueOf)
+                        .collect(Collectors.joining(" "));
+
+				formattedOutput.add(outputStr);
+											
 			}
+			String finalOutput = String.join(delim, formattedOutput);
+			//Write line and move to next line
+			writer.write(finalOutput);
+			
 			
 			//if data is written successfully
 			return new DataWriteResponseImplementation(true);
