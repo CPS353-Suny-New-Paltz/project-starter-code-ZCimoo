@@ -1,15 +1,5 @@
 package project.checkpointtests;
 
-import edu.softwareeng.sample.ComputationCoordinator;
-import edu.softwareeng.sample.ComputeEngine;
-import edu.softwareeng.sample.ComputeEngineImpl;
-import edu.softwareeng.sample.ComputeRequest;
-import edu.softwareeng.sample.CoordinatorImpl;
-import edu.softwareeng.sample.DataStore;
-import edu.softwareeng.sample.DataStoreImpl;
-import edu.softwareeng.sample.FileInputConfig;
-import edu.softwareeng.sample.FileOutputConfig;
-
 import api.DataStorageAPI;
 import api.ComputationRequest;
 import api.ComputationResponse;
