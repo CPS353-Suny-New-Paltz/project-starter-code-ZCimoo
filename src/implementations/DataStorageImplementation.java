@@ -20,6 +20,15 @@ public class DataStorageImplementation implements DataStorageAPI {
 	@Override
 	public DataReadResponse readData(DataReadRequest dataReadRequest) {
 		
+		//Checking if readRequest and input path are null
+		if(dataReadRequest == null) {
+			throw new IllegalArgumentException("DataReadRequest cannot be null");
+		}
+		if(dataReadRequest.getInputPath() == null) {
+			throw new IllegalArgumentException("Input path cannot be null");
+		}
+		
+		
 		String inputPath = dataReadRequest.getInputPath();
 		List<Integer> inputs = new ArrayList<>();
 		
