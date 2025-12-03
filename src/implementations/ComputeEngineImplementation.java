@@ -13,26 +13,41 @@ public class ComputeEngineImplementation implements ComputeEngineAPI {
 	
 	@Override
 	public ComputationStartResponse start(ComputationStartRequest computationStartRequest) {
-		//Validate request and int to compute
-		if(computationStartRequest == null) {
-			throw new IllegalArgumentException("ComputationStartRequest cannot be null");
-		}
-		
-	
-		int intToCompute = computationStartRequest.getComputeInt();
-		if(intToCompute < 1) {
-			throw new IllegalArgumentException("Collatz input must be a positive integer");
-		}
-		
-		List<Integer> sequence = this.computeCollatzSequence(intToCompute);
-		
-		return new ComputationStartResponse() {
-			@Override
-			public List<Integer> getSequence(){
-				return sequence;
+		try {
+			//Validate request and int to compute
+			if(computationStartRequest == null) {
+				throw new IllegalArgumentException("ComputationStartRequest cannot be null");
 			}
-		};
+			
+		
+			int intToCompute = computationStartRequest.getComputeInt();
+			if(intToCompute < 1) {
+				throw new IllegalArgumentException("Collatz input must be a positive integer");
+			}
+			
+			List<Integer> sequence = this.computeCollatzSequence(intToCompute);
+			
+			return new ComputationStartResponse() {
+				@Override
+				public List<Integer> getSequence(){
+					return sequence;
+				}
+			};
+		} catch(Exception e) {
+			System.out.println("Error in compute engine: "+e.getMessage());
+			
+			//returns sentinel value, an empty list to indicate failure
+			return new ComputationStartResponse() {
+				@Override
+				public List<Integer> getSequence(){
+					return new ArrayList<>();
+				}
+			};
+			
+		}
 	}
+		
+		
 
 	@Override
 	public ComputationCompleteResponse completeComputation(ComputationCompleteRequest computationCompleteRequest) {
