@@ -1,6 +1,6 @@
 package project.checkpointtests;
 
-import API_Package.MultithreadedNetworkAPI;
+import implementations.MultithreadedNetworkAPI;
 import api.UserNetworkAPI;
 import api.DataStorageAPI;
 import api.ComputeEngineAPI;
@@ -26,18 +26,20 @@ public class TestMultiUser {
 	// TODO 1: change the type of this variable to the name you're using for your @NetworkAPI
 	// interface
 	private UserNetworkAPI coordinator;
-	//private MultithreadedNetworkAPI networkAPI;
+	private MultithreadedNetworkAPI networkAPI;
 	
 	@BeforeEach
 	public void initializeComputeEngine() {
-		//networkAPI = new MultithreadedNetworkAPI();
-		//TODO 2: create an instance of the implementation of your @NetworkAPI; this is the component
-		// that the user will make requests to
-		// Store it in the 'coordinator' instance variable
 		DataStorageAPI dataStore = new DataStorageImplementation();
 		ComputeEngineAPI computeEngine = new ComputeEngineImplementation();
 		
-		this.coordinator = new UserNetworkImplementation(dataStore, computeEngine);
+		networkAPI = new MultithreadedNetworkAPI(dataStore, computeEngine);
+		//TODO 2: create an instance of the implementation of your @NetworkAPI; this is the component
+		// that the user will make requests to
+		// Store it in the 'coordinator' instance variable
+		
+		
+		this.coordinator = this.networkAPI;
 		
 	}
 	public void cleanup() {
