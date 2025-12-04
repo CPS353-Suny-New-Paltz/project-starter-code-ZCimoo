@@ -3,8 +3,6 @@ package implementations;
 import java.util.ArrayList;
 import java.util.List;
 
-import api.ComputationCompleteRequest;
-import api.ComputationCompleteResponse;
 import api.ComputationStartRequest;
 import api.ComputationStartResponse;
 import api.ComputeEngineAPI;
@@ -13,23 +11,40 @@ public class ComputeEngineImplementation implements ComputeEngineAPI {
 	
 	@Override
 	public ComputationStartResponse start(ComputationStartRequest computationStartRequest) {
-		int intToCompute = computationStartRequest.getComputeInt();
-		
-		List<Integer> sequence = this.computeCollatzSequence(intToCompute);
-		
-		return new ComputationStartResponse() {
-			@Override
-			public List<Integer> getSequence(){
-				return sequence;
+		try {
+			//Validate request and int to compute
+			if(computationStartRequest == null) {
+				throw new IllegalArgumentException("ComputationStartRequest cannot be null");
 			}
-		};
+			
+		
+			int intToCompute = computationStartRequest.getComputeInt();
+			if(intToCompute < 1) {
+				throw new IllegalArgumentException("Collatz input must be a positive integer");
+			}
+			
+			List<Integer> sequence = this.computeCollatzSequence(intToCompute);
+			
+			return new ComputationStartResponse() {
+				@Override
+				public List<Integer> getSequence(){
+					return sequence;
+				}
+			};
+		} catch(Exception e) {
+			System.out.println("Error in compute engine: "+e.getMessage());
+			
+			//returns sentinel value, an empty list to indicate failure
+			return new ComputationStartResponse() {
+				@Override
+				public List<Integer> getSequence(){
+					return new ArrayList<>();
+				}
+			};
+			
+		}
 	}
-
-	@Override
-	public ComputationCompleteResponse completeComputation(ComputationCompleteRequest computationCompleteRequest) {
-		//placeholder return
-		return null;
-	}
+		
 	
 	private List<Integer> computeCollatzSequence(int x){
 		List<Integer> result = new ArrayList<>();
