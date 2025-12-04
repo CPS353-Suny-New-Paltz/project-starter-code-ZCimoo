@@ -59,7 +59,6 @@ public class MultithreadedNetworkAPI extends AbstractUserNetworkAPI {
 				outputData.add(new ArrayList<>());
 			}
 		}
-		executor.shutdown();
 		
 		return outputData;
 		
