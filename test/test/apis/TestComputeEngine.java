@@ -37,7 +37,7 @@ public class TestComputeEngine {
 		UserNetworkImplementation userNetwork = new UserNetworkImplementation(dataStore, computeEngine);
 		
 		//create computation  request for inputData
-		ComputationRequest computationRequest = new ComputationRequest("dummy-input-path");
+		ComputationRequest computationRequest = new ComputationRequest("dummy-input-path","dummy-output-path");
 		
 		//send computation request through user network
 		userNetwork.sendRequest(computationRequest);
