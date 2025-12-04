@@ -3,8 +3,6 @@ package implementations;
 import java.util.ArrayList;
 import java.util.List;
 
-import api.ComputationCompleteRequest;
-import api.ComputationCompleteResponse;
 import api.ComputationStartRequest;
 import api.ComputationStartResponse;
 import api.ComputeEngineAPI;
@@ -47,13 +45,6 @@ public class ComputeEngineImplementation implements ComputeEngineAPI {
 		}
 	}
 		
-		
-
-	@Override
-	public ComputationCompleteResponse completeComputation(ComputationCompleteRequest computationCompleteRequest) {
-		//placeholder return
-		return null;
-	}
 	
 	private List<Integer> computeCollatzSequence(int x){
 		List<Integer> result = new ArrayList<>();

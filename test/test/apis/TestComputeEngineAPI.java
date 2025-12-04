@@ -10,8 +10,6 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import api.ComputationCompleteRequest;
-import api.ComputationCompleteResponse;
 import api.ComputationStartRequest;
 import api.ComputationStartResponse;
 import implementations.ComputeEngineImplementation;
@@ -32,19 +30,6 @@ public class TestComputeEngineAPI {
 		List<Integer> actualList = startResponse.getSequence();
 		
 		assertEquals(expectedList, actualList);
-	}
-	
-	@Test
-	public void testCompleteComputationReturnsDefault() {
-		//create implementation
-		ComputeEngineImplementation computeEngine = new ComputeEngineImplementation();
-		
-		//call complete method with mock request
-		ComputationCompleteResponse response =
-				computeEngine.completeComputation(Mockito.mock(ComputationCompleteRequest.class));
-		
-		//placeholder return because implementation is not complete
-		assertNull(response, "Expected null response, not implemented yet");
 	}
 	
 	@Test 
