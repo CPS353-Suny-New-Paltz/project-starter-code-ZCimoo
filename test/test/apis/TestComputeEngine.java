@@ -1,6 +1,7 @@
 package test.apis;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,6 +10,9 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import api.ComputationRequest;
+import api.ComputationResponse;
+import api.DataReadRequest;
+import api.DataReadResponse;
 import implementations.ComputeEngineImplementation;
 import implementations.UserNetworkImplementation;
 
@@ -51,5 +55,25 @@ public class TestComputeEngine {
 		
 		//checking if expected results = actual results
 		assertEquals(expectedResults, results);
+	}
+	
+	@Test
+	public void integration_ComponentCrash_HandledGracefully() {
+		InMemoryDataStoreAPI brokenDataStore = new InMemoryDataStoreAPI(null, null) {
+			@Override
+			public DataReadResponse readData(DataReadRequest request) {
+				//Simulates failure
+				throw new RuntimeException("Critical System Failure");
+			}
+		};
+		
+		ComputeEngineImplementation computeEngine = new ComputeEngineImplementation();
+		UserNetworkImplementation userNetwork = new UserNetworkImplementation(brokenDataStore, computeEngine);
+		
+		ComputationRequest request = new ComputationRequest("in.txt", "out.txt");
+		
+		ComputationResponse response = userNetwork.sendRequest(request);
+		
+		assertNotNull(response, "System should return a response even after crash");
 	}
 }

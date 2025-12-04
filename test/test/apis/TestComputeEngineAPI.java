@@ -64,5 +64,4 @@ public class TestComputeEngineAPI {
 		assertTrue(actualList.isEmpty(), "Expected an empty list for invalid input");
 		
 	}
-
 }
