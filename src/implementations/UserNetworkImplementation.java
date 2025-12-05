@@ -16,7 +16,7 @@ import api.DataWriteRequest;
 import api.DataWriteResponse;
 import api.UserNetworkAPI;
 
-public class UserNetworkImplementation extends AbstractUserNetworkAPI {
+public class UserNetworkImplementation extends AbstractUserNetworkAPI implements UserNetworkAPI {
 	
 
 	public UserNetworkImplementation(DataStorageAPI ds, ComputeEngineAPI ce) {

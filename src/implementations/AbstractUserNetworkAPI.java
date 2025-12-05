@@ -16,7 +16,7 @@ import api.DataWriteRequest;
 import api.DataWriteResponse;
 import api.UserNetworkAPI;
 
-public abstract class AbstractUserNetworkAPI implements UserNetworkAPI{
+public abstract class AbstractUserNetworkAPI {
 	protected DataStorageAPI dataStore;
 	protected ComputeEngineAPI computeEngine;
 	
@@ -28,7 +28,7 @@ public abstract class AbstractUserNetworkAPI implements UserNetworkAPI{
 	
 	protected abstract List<List<Integer>> runComputation(List<Integer> inputData) throws Exception;
 	
-	@Override
+	
 	public ComputationResponse sendRequest(ComputationRequest computationRequest) {
 		try {
 			//Validate request and input/output paths
