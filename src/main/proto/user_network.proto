@@ -1,0 +1,21 @@
+syntax = "proto2";
+
+option java_multiple_files = true;
+option java_package = "grpc";
+option java_outer_classname = "UserNetworkProto";
+
+service UserNetworkService {
+	rpc submitRequest (ComputationRequest) returns (ComputationResponse) {}
+}
+
+message ComputationRequest {
+	required string inputPath = 1;
+	required string outputPath = 2;
+	optional string delimiter = 3;
+}
+
+message ComputationResponse {
+	required bool success = 1;
+	optional string errorMessage = 2;
+	optional int32 statusCode = 3;
+}
