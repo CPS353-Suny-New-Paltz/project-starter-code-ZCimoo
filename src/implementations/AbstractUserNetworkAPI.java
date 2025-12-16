@@ -99,7 +99,9 @@ public abstract class AbstractUserNetworkAPI {
 		
 		String[] tokens = input.split("[,;\\s]+");
 		
-		if (tokens.length == 0) throw new NumberFormatException("Empty input");
+		if (tokens.length == 0) {
+			throw new NumberFormatException("Empty input");
+		}
 		
 		for(String token : tokens) {
 			if(!token.trim().isEmpty()) {
