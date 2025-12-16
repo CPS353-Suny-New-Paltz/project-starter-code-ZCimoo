@@ -40,22 +40,35 @@ public abstract class AbstractUserNetworkAPI {
 			}
 			
 			//Get input and output paths from user
-			String inputPath = computationRequest.getInputPath();
+			String inputString = computationRequest.getInputPath();
 			String outputPath = computationRequest.getOutputPath();
+			List<Integer> inputData;
 			
-			//Create data read request for the inputPath specified by user
-			DataReadRequest drRequest= new DataReadRequest(inputPath);
 			
-			//Send and catch data store response 
-			DataReadResponse drResponse = dataStore.readData(drRequest);
-			
-			//Checks for file read failure
-			if(!drResponse.status()) {
-				throw new IOException("Failed to read input file");
+			//Checks if input is file path or just a raw input
+			try {
+				inputData = parseInput(inputString);
+				System.out.println("Raw In-Memory Input Detected");
+			} catch (NumberFormatException e) {
+				System.out.println("Detected file path.");
+				
+				//Create data read request for the inputPath specified by user
+				DataReadRequest drRequest= new DataReadRequest(inputString);
+				
+				//Send and catch data store response 
+				DataReadResponse drResponse = dataStore.readData(drRequest);
+				
+				//Checks for file read failure
+				if(!drResponse.status()) {
+					throw new IOException("Failed to read input file");
+				}
+				inputData = drResponse.getData();
 			}
 			
+			
+			
 			//Calls computation
-			List<List<Integer>> outputData = runComputation(drResponse.getData());
+			List<List<Integer>> outputData = runComputation(inputData);
 			
 			
 			//Create request to write outputData
@@ -78,5 +91,22 @@ public abstract class AbstractUserNetworkAPI {
 		}
 		
 		
+	}
+
+	//helper method to parse strings that contain an input
+	private List<Integer> parseInput(String input) throws NumberFormatException {
+		List<Integer> numbers = new ArrayList<>();
+		
+		String[] tokens = input.split("[,;\\s]+");
+		
+		if (tokens.length == 0) throw new NumberFormatException("Empty input");
+		
+		for(String token : tokens) {
+			if(!token.trim().isEmpty()) {
+				numbers.add(Integer.parseInt(token.trim()));
+			}
+		}
+		
+		return numbers;
 	}
 }
