@@ -20,13 +20,18 @@ public class DataStorageClient implements DataStorageAPI {
 	private final DataStorageServiceGrpc.DataStorageServiceBlockingStub blockingStub;
 	private final ManagedChannel channel;
 	
+	public DataStorageClient() {
+        this.channel = null;
+        this.blockingStub = null;
+    }
+	
 	public DataStorageClient(String host, int port) {
 		this.channel = Grpc.newChannelBuilder(host + ":" + port, InsecureChannelCredentials.create())
 				.build();
 		this.blockingStub = DataStorageServiceGrpc.newBlockingStub(channel);
 		
 	}
-	
+
 	public void shutdown() throws InterruptedException{
 		channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
 	}

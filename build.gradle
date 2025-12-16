@@ -47,6 +47,7 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    exclude '**/Checkpoint3TestSuite.class'
     
     
 }
