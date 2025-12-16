@@ -1,0 +1,38 @@
+syntax = "proto2";
+
+option java_multiple_files = true;
+option java_package = "grpc";
+option java_outer_classname = "DataStorageProto";
+
+service DataStorageService {
+
+	rpc readData (DataReadRequest) returns (DataReadResponse);
+
+	rpc writeData (DataWriteRequest) returns (DataWriteResponse);
+}
+
+message DataReadRequest {
+optional string inputPath = 1;
+}
+
+message DataReadResponse {
+	repeated int32 data = 1;
+	optional bool status = 2;
+	optional string errorMessage = 3;
+}
+
+message DataWriteRequest {
+	optional string outputPath = 1;
+	optional string delimiter = 2;
+	repeated IntList outputData = 3;
+}
+
+//wrapper for nested lists
+message IntList {
+	repeated int32 values = 1;
+}
+
+message DataWriteResponse {
+	optional bool status = 1;
+	optional string errorMessage = 2;
+}
