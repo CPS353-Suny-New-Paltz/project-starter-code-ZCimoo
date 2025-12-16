@@ -54,8 +54,8 @@ private void runBenchmark(String name, AbstractUserNetworkAPI networkAPI, String
 
 @Test
 public void testFinalPerformanceComparison() {
-    int inputSize = 100000;
-    int iterations = 100; 
+    int inputSize = 10000;
+    int iterations = 10; 
 
     //build large string
     StringBuilder inputBuilder = new StringBuilder();

@@ -8,6 +8,7 @@ import api.ComputationStartResponse;
 import api.ComputeEngineAPI;
 
 public class ComputeEngineImplementation implements ComputeEngineAPI {
+	private final ThreadLocal<List<Integer>> reusableList = ThreadLocal.withInitial(() -> new ArrayList<>(128));
 	
 	@Override
 	public ComputationStartResponse start(ComputationStartRequest computationStartRequest) {
@@ -47,7 +48,8 @@ public class ComputeEngineImplementation implements ComputeEngineAPI {
 		
 	
 	private List<Integer> computeCollatzSequence(int x){
-		List<Integer> result = new ArrayList<>();
+		List<Integer> result = reusableList.get();
+		result.clear();
 		
 		//add initial value to sequence
 		result.add(x);
@@ -67,6 +69,6 @@ public class ComputeEngineImplementation implements ComputeEngineAPI {
 			}
 		}
 	
-		return result;
+		return new ArrayList<>(result);
 	}
 }
