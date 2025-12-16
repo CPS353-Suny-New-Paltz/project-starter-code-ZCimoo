@@ -15,6 +15,16 @@ import api.ComputationStartResponse;
 import api.ComputeEngineAPI;
 import api.DataStorageAPI;
 
+/**
+ * Identified original multithreaded implementaiton suffered from "Head-of-Line Blocking" during result collection. 
+ * Code iterated of a list of futures and calls future.get() forcing everything to wait. If the first task was delayed
+ * all other ones were too.
+ * 
+ * Improvement: Utilized an ExecutorCompletionService. Allows tasks to be submitted to the pool and taken out in the order
+ * they are completed regardless of order.
+ * 
+ * Result: 23.64% improvement over the original multithreaded implementation (492,610 Inputs/sec vs. 398,406 Inputs/sec.
+ */
 public class FasterUserNetworkAPI extends AbstractUserNetworkAPI {
 	
 	private ExecutorService executor;
