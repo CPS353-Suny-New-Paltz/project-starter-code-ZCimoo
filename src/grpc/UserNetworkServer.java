@@ -21,7 +21,7 @@ public class UserNetworkServer {
 	
 	private void start() throws IOException {
 		//Initialize components
-		DataStorageAPI dataStore = new DataStorageImplementation();
+		DataStorageAPI dataStore = new client.DataStorageClient("127.0.0.1", 8001);
 		ComputeEngineAPI computeEngine = new ComputeEngineImplementation();
 		UserNetworkAPI userNetwork = new UserNetworkImplementation(dataStore, computeEngine);
 		
