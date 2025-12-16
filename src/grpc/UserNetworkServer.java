@@ -25,7 +25,7 @@ public class UserNetworkServer {
 		ComputeEngineAPI computeEngine = new ComputeEngineImplementation();
 		UserNetworkAPI userNetwork = new UserNetworkImplementation(dataStore, computeEngine);
 		
-		int port = 50051;
+		int port = 8000;
 		
 		server = Grpc.newServerBuilderForPort(port, InsecureServerCredentials.create())
 				.addService(new UserNetworkServiceImplementation(userNetwork))
